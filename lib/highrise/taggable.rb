@@ -13,5 +13,9 @@ module Highrise
     def untag_id!(tag_id)
       self.delete("tags/#{tag_id}")
     end
+    def tagged?(tag_name)
+      tags = self.tags.find{|tag| tag['name'] == tag_name} unless tag_name.blank?
+      !tags.blank?
+    end
   end
 end
